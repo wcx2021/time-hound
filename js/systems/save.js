@@ -1,6 +1,6 @@
 Game.save = function () {
   try {
-    const data = {
+    var data = {
       total: Game.state.total,
       lastStealTime: Game.state.lastStealTime,
       captureCount: Game.state.captureCount,
@@ -14,9 +14,9 @@ Game.save = function () {
       upgrades: Game.state.upgrades,
       curseShopUpgrades: Game.state.curseShopUpgrades,
       challengesComplete: Game.state.challengesComplete,
-      // 新添加：保存时间悖论相关
       paradoxPoints: Game.state.paradoxPoints,
       paradoxMilestones: Game.state.paradoxMilestones,
+      currentPage: Game.Navigation ? Game.Navigation.getCurrentPage() : 'steal',
     };
     localStorage.setItem(Game.SAVE_KEY, JSON.stringify(data));
     return true;
@@ -27,10 +27,10 @@ Game.save = function () {
 
 Game.load = function () {
   try {
-    const raw = localStorage.getItem(Game.SAVE_KEY);
+    var raw = localStorage.getItem(Game.SAVE_KEY);
     if (!raw) return false;
 
-    const data = JSON.parse(raw);
+    var data = JSON.parse(raw);
     Game.state.total = data.total || 0;
     Game.state.lastStealTime = data.lastStealTime || Date.now();
     Game.state.captureCount = data.captureCount || 0;
@@ -52,12 +52,16 @@ Game.load = function () {
       data.curseShopUpgrades || {}
     );
     Game.state.challengesComplete = data.challengesComplete || 0;
-    // 新添加：加载时间悖论相关
     Game.state.paradoxPoints = data.paradoxPoints || 0;
     Game.state.paradoxMilestones = data.paradoxMilestones || 0;
 
     if (!Game.state.curseGatePassed && Game.state.total >= Game.CONFIG.curseThreshold) {
       Game.state.curseGatePassed = true;
+    }
+
+    // 恢复上次浏览的子页面
+    if (data.currentPage && Game.Navigation) {
+      Game.Navigation.switchTo(data.currentPage, true);
     }
 
     return true;
@@ -94,10 +98,10 @@ Game.resetSave = function () {
     },
     challengesComplete: 0,
     cursedHoundBaseChance: 0.1,
-    // 新添加：重置时间悖论相关
     paradoxPoints: 0,
     paradoxMilestones: 0,
   };
+  Game.forceRefreshLists();
   Game.updateUI();
   Game.save();
   return true;

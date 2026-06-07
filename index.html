@@ -5,101 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>时间猎犬增量</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tabs.css">
+  <link rel="stylesheet" href="css/curse.css">
 </head>
 <body>
   <div class="game-container">
     <header class="game-header">
-      <div class="header-left">
-        <button class="settings-btn" id="settings-btn">⚙️ 设置</button>
-      </div>
       <h1>时间猎犬增量</h1>
-      <div class="header-right"></div>
     </header>
 
-    <!-- 设置面板 -->
-    <div class="settings-panel hidden" id="settings-panel">
-      <div class="settings-content">
-        <div class="settings-header">
-          <h2>设置</h2>
-          <button class="close-settings-btn" id="close-settings-btn">✕</button>
+    <nav class="tab-nav" id="tab-nav">
+      <button class="tab-btn active" data-page="steal">窃取</button>
+      <button class="tab-btn" data-page="upgrade">升级</button>
+      <button class="tab-btn" data-page="progress">进度</button>
+      <button class="tab-btn" data-page="settings">设置</button>
+    </nav>
+
+    <!-- ===== 窃取页 ===== -->
+    <section class="page-steal page-section active" id="page-steal">
+      <section class="currency-panel">
+        <div class="currency-label">时间本质</div>
+        <div class="currency-value" id="essence-total">0</div>
+      </section>
+
+      <section class="steal-panel">
+        <div class="progress-wrapper">
+          <div class="progress-bar" id="progress-bar"></div>
         </div>
-        <div class="settings-actions">
-          <button class="reset-save-btn" id="reset-save-btn">重置存档</button>
+        <div class="pending-label">
+          待窃取：<span id="essence-pending">0</span>
+          <span class="pending-cap hidden" id="pending-cap">（已达上限）</span>
         </div>
-      </div>
-    </div>
+        <button class="steal-btn" id="steal-btn">窃取时间</button>
+      </section>
 
-    <section class="curse-milestone" id="curse-milestone">
-      <div class="milestone-header">
-        <span class="milestone-title">诅咒之门</span>
-        <span class="milestone-remaining" id="curse-remaining-text">还差 1E4</span>
-      </div>
-      <div class="progress-wrapper curse-milestone-wrapper">
-        <div class="progress-bar curse-milestone-bar" id="curse-bar"></div>
-      </div>
-      <div class="milestone-footer">
-        <span class="milestone-progress-text" id="curse-progress-text">0 / 1E4 时间本质</span>
-      </div>
-      <a class="curse-btn hidden" id="curse-btn" href="curse.html">进入诅咒</a>
-    </section>
-
-    <section class="curse-times-milestone hidden" id="curse-times-milestone">
-      <div class="milestone-header">
-        <span class="milestone-title">被诅咒</span>
-        <span class="milestone-remaining" id="curse-times-remaining">还差 10 次</span>
-      </div>
-      <div class="progress-wrapper curse-times-wrapper">
-        <div class="progress-bar curse-times-bar" id="curse-times-bar"></div>
-      </div>
-      <div class="milestone-footer">
-        <span class="milestone-progress-text" id="curse-times-text">0 / 10</span>
-      </div>
-      <a class="curse-btn" id="curse-btn-times" href="curse.html">进入诅咒</a>
-    </section>
-
-    <section class="curse-points-milestone hidden" id="curse-points-milestone">
-      <div class="milestone-header">
-        <span class="milestone-title">诅咒点数</span>
-        <span class="milestone-remaining" id="curse-points-remaining">还差 1E5</span>
-      </div>
-      <div class="progress-wrapper curse-points-wrapper">
-        <div class="progress-bar curse-points-bar" id="curse-points-bar"></div>
-      </div>
-      <div class="milestone-footer">
-        <span class="milestone-progress-text" id="curse-points-text">0 / 1E5</span>
-      </div>
-      <a class="curse-btn" id="curse-btn-points" href="curse.html">进入诅咒</a>
-    </section>
-
-    <section class="challenges-milestone hidden" id="challenges-milestone">
-      <div class="milestone-header">
-        <span class="milestone-title">完成五个挑战</span>
-        <span class="milestone-remaining" id="challenges-remaining">还差 5 个</span>
-      </div>
-      <div class="progress-wrapper challenges-wrapper">
-        <div class="progress-bar challenges-bar" id="challenges-bar"></div>
-      </div>
-      <div class="milestone-footer">
-        <span class="milestone-progress-text" id="challenges-text">0 / 5</span>
-      </div>
-      <a class="curse-btn" id="curse-btn-challenges" href="curse.html">进入诅咒</a>
-    </section>
-
-    <!-- 新添加：悖论点里程碑 -->
-    <section class="paradox-milestone hidden" id="paradox-milestone">
-      <div class="milestone-header">
-        <span class="milestone-title">时间悖论</span>
-        <span class="milestone-remaining" id="paradox-remaining">解锁 0</span>
-      </div>
-      <div class="progress-wrapper paradox-wrapper">
-        <div class="progress-bar paradox-bar" id="paradox-bar"></div>
-      </div>
-      <div class="milestone-footer">
-        <span class="milestone-progress-text" id="paradox-text">悖论点: 0 | 加成: 全属性+0%</span>
-      </div>
-    </section>
-
-    <main class="game-layout">
       <aside class="hound-panel">
         <div class="hound-header">
           <span class="hound-title">时间猎犬</span>
@@ -171,31 +110,86 @@
         </div>
       </aside>
 
-      <div class="game-content">
-        <section class="currency-panel">
-          <div class="currency-label">时间本质</div>
-          <div class="currency-value" id="essence-total">0</div>
-        </section>
+      <section class="upgrade-panel hidden" id="upgrade-panel">
+        <div class="upgrade-header">
+          <span class="upgrade-title">能力升级</span>
+        </div>
+        <div class="upgrade-list" id="upgrade-list"></div>
+      </section>
+    </section>
 
-        <section class="steal-panel">
-          <div class="progress-wrapper">
-            <div class="progress-bar" id="progress-bar"></div>
-          </div>
-          <div class="pending-label">
-            待窃取：<span id="essence-pending">0</span>
-            <span class="pending-cap hidden" id="pending-cap">（已达上限）</span>
-          </div>
-          <button class="steal-btn" id="steal-btn">窃取时间</button>
-        </section>
-
-        <section class="upgrade-panel hidden" id="upgrade-panel">
-          <div class="upgrade-header">
-            <span class="upgrade-title">能力升级</span>
-          </div>
-          <div class="upgrade-list" id="upgrade-list"></div>
-        </section>
+    <!-- ===== 升级页 ===== -->
+    <section class="page-upgrade page-section" id="page-upgrade">
+      <div class="upgrade-page-header">
+        <h2 class="upgrade-page-title">禁忌之力</h2>
+        <p class="upgrade-page-subtitle">以一切换取禁忌之力。</p>
       </div>
-    </main>
+
+      <section class="curse-sacrifice-panel">
+        <h2 class="curse-section-title">禁忌献祭</h2>
+        <p class="curse-sacrifice-desc">
+          牺牲你现有的<strong>全部时间本质</strong>与<strong>全部猎犬部件</strong>，
+          换取一件「被诅咒」的猎犬部件。每次献祭计为被诅咒一次。
+          <br><strong>提示：想要达成一次被诅咒，你最少需要 1E4 的时间本质。</strong>
+        </p>
+        <div class="curse-sacrifice-preview" id="sacrifice-preview">
+          可献祭：时间本质 0，部件 0 件
+        </div>
+        <button type="button" class="curse-sacrifice-btn" id="sacrifice-btn" disabled>
+          献祭一切，接受诅咒
+        </button>
+        <p class="curse-sacrifice-warn">此操作不可撤销。</p>
+      </section>
+
+      <section class="curse-inventory-panel">
+        <h2 class="curse-section-title">被诅咒部件</h2>
+        <div class="curse-parts-list" id="curse-parts-list">
+          <div class="parts-empty">尚无被诅咒部件</div>
+        </div>
+      </section>
+
+      <section class="curse-shop-panel hidden" id="curse-shop-panel">
+        <h2 class="curse-section-title">诅咒商店</h2>
+        <div class="curse-points-balance">
+          诅咒点数：<span id="curse-points-balance">0</span>
+        </div>
+        <div class="curse-shop-list" id="curse-shop-list"></div>
+      </section>
+    </section>
+
+    <!-- ===== 进度页 ===== -->
+    <section class="page-progress page-section" id="page-progress">
+      <div class="progress-page-header">
+        <h2 class="progress-page-title">进度与成就</h2>
+      </div>
+
+      <section class="achievements-panel" id="achievements-panel">
+        <h2 class="curse-section-title">成就</h2>
+        <div class="achievements-list" id="achievements-list"></div>
+      </section>
+
+      <section class="curse-challenges-panel hidden" id="curse-challenges-panel">
+        <h2 class="curse-section-title">挑战</h2>
+        <button type="button" class="curse-challenge-btn" id="challenge-btn">
+          开始挑战
+        </button>
+      </section>
+
+      <section class="stats-detail-panel" id="stats-detail-panel">
+        <h2 class="curse-section-title">统计</h2>
+        <div class="stats-detail-list" id="stats-detail-list"></div>
+      </section>
+    </section>
+
+    <!-- ===== 设置页 ===== -->
+    <section class="page-settings page-section" id="page-settings">
+      <div class="settings-page-header">
+        <h2 class="settings-page-title">设置</h2>
+      </div>
+      <div class="settings-page-content">
+        <button class="reset-save-btn" id="reset-save-btn">重置存档</button>
+      </div>
+    </section>
   </div>
 
   <div class="toast hidden" id="capture-toast">
@@ -211,6 +205,7 @@
   <script src="js/systems/curse.js"></script>
   <script src="js/systems/curseShop.js"></script>
   <script src="js/systems/timeHound.js"></script>
+  <script src="js/ui/navigation.js"></script>
   <script src="js/ui/ui.js"></script>
   <script src="js/main.js"></script>
 

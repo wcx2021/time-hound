@@ -16,7 +16,7 @@ body {
 }
 
 .game-container {
-  width: min(920px, 96vw);
+  width: min(640px, 96vw);
   padding: 2rem;
 }
 
@@ -30,117 +30,179 @@ body {
   text-shadow: 0 0 20px rgba(160, 120, 255, 0.4);
 }
 
-.curse-milestone {
-  background: rgba(127, 29, 29, 0.12);
-  border: 1px solid rgba(248, 113, 113, 0.25);
-  border-radius: 14px;
-  padding: 1rem 1.15rem;
-  margin-bottom: 1.5rem;
-  animation: panel-in 0.35s ease;
+.game-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
 }
 
-.curse-milestone.hidden {
+/* ===== 窃取页布局 ===== */
+.page-steal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.currency-panel {
+  text-align: center;
+}
+
+.currency-label {
+  font-size: 0.95rem;
+  color: #9a8fc7;
+  margin-bottom: 0.5rem;
+}
+
+.currency-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #e0d4ff;
+  font-variant-numeric: tabular-nums;
+}
+
+.steal-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.progress-wrapper {
+  width: 100%;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(180, 150, 255, 0.2);
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #6b4ce6, #a78bfa);
+  border-radius: 14px;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+}
+
+.progress-bar.full {
+  background: linear-gradient(90deg, #a78bfa, #fbbf24);
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.45);
+}
+
+.pending-label {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #b0a3d4;
+  font-variant-numeric: tabular-nums;
+}
+
+.pending-cap {
+  color: #fbbf24;
+  font-size: 0.82rem;
+  margin-left: 0.25rem;
+}
+
+.pending-cap.hidden {
   display: none;
 }
 
-.milestone-header {
+.steal-btn {
+  padding: 0.9rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+}
+
+.steal-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.55);
+}
+
+.steal-btn:active {
+  transform: translateY(0);
+}
+
+.steal-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===== 猎犬面板 ===== */
+.hound-panel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(180, 150, 255, 0.15);
+  border-radius: 16px;
+  padding: 1.25rem;
+}
+
+.hound-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.hound-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #d4c4ff;
+}
+
+.capture-count {
   font-size: 0.85rem;
-}
-
-.milestone-title {
-  font-weight: 600;
-  color: #fca5a5;
-}
-
-.milestone-progress-text {
   color: #9a8fc7;
-  font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
 }
 
-.milestone-remaining {
-  color: #fca5a5;
-  font-weight: 600;
+.risk-panel {
+  margin-bottom: 1rem;
+}
+
+.risk-hint {
+  font-size: 0.72rem;
+  color: #8a7aaa;
+  margin-top: 0.35rem;
+  text-align: center;
+}
+
+.risk-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #c4a8a8;
+  margin-bottom: 0.4rem;
   font-variant-numeric: tabular-nums;
 }
 
-.milestone-footer {
-  margin-top: 0.4rem;
-  text-align: center;
+.risk-wrapper {
+  height: 14px;
+  border-color: rgba(220, 100, 100, 0.25);
 }
 
-.curse-milestone-wrapper {
-  height: 16px;
-  border-color: rgba(248, 113, 113, 0.2);
+.risk-bar {
+  background: linear-gradient(90deg, #dc2626, #f87171);
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.45);
 }
 
-.curse-milestone-bar {
-  background: linear-gradient(90deg, #991b1b, #f87171);
-  box-shadow: 0 0 10px rgba(220, 38, 38, 0.4);
+.cursed-hound-panel {
+  margin-bottom: 1rem;
 }
 
-.curse-btn {
-  display: block;
-  margin-top: 0.85rem;
-  padding: 0.7rem 1rem;
-  text-align: center;
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #fff;
-  background: linear-gradient(135deg, #991b1b, #7f1d1d);
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(153, 27, 27, 0.4);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-
-.curse-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(153, 27, 27, 0.55);
-}
-
-.curse-btn.hidden {
+.cursed-hound-panel.hidden {
   display: none;
 }
 
-.curse-times-milestone {
-  background: rgba(88, 28, 135, 0.15);
-  border: 1px solid rgba(192, 132, 252, 0.3);
-  border-radius: 14px;
-  padding: 1rem 1.15rem;
-  margin-bottom: 1.5rem;
-  animation: panel-in 0.35s ease;
-}
-
-.curse-times-milestone.hidden {
-  display: none;
-}
-
-.curse-points-milestone {
-  background: rgba(30, 58, 138, 0.15);
-  border: 1px solid rgba(96, 165, 250, 0.3);
-  border-radius: 14px;
-  padding: 1rem 1.15rem;
-  margin-bottom: 1.5rem;
-  animation: panel-in 0.35s ease;
-}
-
-.curse-points-milestone.hidden {
-  display: none;
-}
-
-.curse-points-wrapper {
-  height: 16px;
-  border-color: rgba(96, 165, 250, 0.25);
-}
-
-.curse-points-bar {
-  background: linear-gradient(90deg, #1d4ed8, #60a5fa);
-  box-shadow: 0 0 10px rgba(96, 165, 250, 0.4);
+.cursed-hound-bar {
+  background: linear-gradient(90deg, #be123c, #f43f5e);
+  box-shadow: 0 0 10px rgba(244, 63, 94, 0.45);
 }
 
 .curse-stats {
@@ -173,18 +235,127 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-.curse-times-wrapper {
-  height: 16px;
-  border-color: rgba(192, 132, 252, 0.25);
+.stats-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.curse-times-bar {
-  background: linear-gradient(90deg, #6b21a8, #c084fc);
-  box-shadow: 0 0 10px rgba(192, 132, 252, 0.4);
+.stat-item {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 0.6rem 0.4rem;
+  text-align: center;
+}
+
+.stat-name {
+  display: block;
+  font-size: 0.72rem;
+  color: #9a8fc7;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e8dfff;
+  font-variant-numeric: tabular-nums;
 }
 
 .stat-item.stat-curse.hidden {
   display: none;
+}
+
+/* ===== 部件面板 ===== */
+.parts-panel {
+  margin-top: 0.5rem;
+}
+
+.parts-title {
+  font-size: 0.85rem;
+  color: #9a8fc7;
+  margin-bottom: 0.6rem;
+}
+
+.parts-list {
+  max-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.parts-empty {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6b6288;
+  padding: 0.75rem 0;
+}
+
+.part-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  border-left: 3px solid #7c3aed;
+}
+
+.part-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.part-concentration {
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.part-concentration.conc-low {
+  color: #93c5fd;
+}
+
+.part-concentration.conc-mid {
+  color: #fbbf24;
+}
+
+.part-concentration.conc-high {
+  color: #f472b6;
+  text-shadow: 0 0 8px rgba(244, 114, 182, 0.4);
+}
+
+.part-item.stat-timeFlow {
+  border-left-color: #60a5fa;
+}
+
+.part-item.stat-stealMultiplier {
+  border-left-color: #f59e0b;
+}
+
+.part-item.stat-luck {
+  border-left-color: #34d399;
+}
+
+.part-item.stat-timeCurse {
+  border-left-color: #e11d48;
+}
+
+.part-name {
+  font-size: 0.85rem;
+  color: #ddd6f5;
+}
+
+.part-bonus {
+  font-size: 0.8rem;
+  color: #b0a3d4;
+  font-variant-numeric: tabular-nums;
 }
 
 .cursed-equipped-panel.hidden {
@@ -203,90 +374,12 @@ body {
   border-left-color: #e11d48;
 }
 
-.part-item.stat-timeCurse {
-  border-left-color: #e11d48;
-}
-
-
-.game-layout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 1.25rem;
-  align-items: start;
-}
-
-.game-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.currency-panel {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.currency-label {
-  font-size: 0.95rem;
-  color: #9a8fc7;
-  margin-bottom: 0.5rem;
-}
-
-.currency-value {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #e0d4ff;
-  font-variant-numeric: tabular-nums;
-}
-
-.steal-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.progress-wrapper {
-  width: 100%;
-  height: 28px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(180, 150, 255, 0.2);
-}
-
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #6b4ce6, #a78bfa);
-  border-radius: 14px;
-  transition: width 0.1s linear;
-  box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
-}
-
-.pending-label {
-  text-align: center;
-  font-size: 0.9rem;
-  color: #b0a3d4;
-  font-variant-numeric: tabular-nums;
-}
-
-.pending-cap {
-  color: #fbbf24;
-  font-size: 0.82rem;
-  margin-left: 0.25rem;
-}
-
-.pending-cap.hidden {
-  display: none;
-}
-
+/* ===== 升级面板 ===== */
 .upgrade-panel {
   background: rgba(124, 58, 237, 0.1);
   border: 1px solid rgba(167, 139, 250, 0.35);
   border-radius: 16px;
   padding: 1.25rem;
-  margin-bottom: 0;
   animation: panel-in 0.35s ease;
 }
 
@@ -366,222 +459,7 @@ body {
   cursor: not-allowed;
 }
 
-.progress-bar.full {
-  background: linear-gradient(90deg, #a78bfa, #fbbf24);
-  box-shadow: 0 0 14px rgba(251, 191, 36, 0.45);
-}
-
-@keyframes panel-in {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.steal-btn {
-  padding: 0.9rem 1.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #fff;
-  background: linear-gradient(135deg, #7c3aed, #5b21b6);
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
-}
-
-.steal-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.55);
-}
-
-.steal-btn:active {
-  transform: translateY(0);
-}
-
-.steal-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.hound-panel {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(180, 150, 255, 0.15);
-  border-radius: 16px;
-  padding: 1.25rem;
-  position: sticky;
-  top: 1.5rem;
-}
-
-.hound-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.hound-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #d4c4ff;
-}
-
-.capture-count {
-  font-size: 0.85rem;
-  color: #9a8fc7;
-  font-variant-numeric: tabular-nums;
-}
-
-.risk-panel {
-  margin-bottom: 1rem;
-}
-
-.risk-hint {
-  font-size: 0.72rem;
-  color: #8a7aaa;
-  margin-top: 0.35rem;
-  text-align: center;
-}
-
-.risk-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.85rem;
-  color: #c4a8a8;
-  margin-bottom: 0.4rem;
-  font-variant-numeric: tabular-nums;
-}
-
-.risk-wrapper {
-  height: 14px;
-  border-color: rgba(220, 100, 100, 0.25);
-}
-
-.risk-bar {
-  background: linear-gradient(90deg, #dc2626, #f87171);
-  box-shadow: 0 0 10px rgba(220, 38, 38, 0.45);
-}
-
-.stats-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.stat-item {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  padding: 0.6rem 0.4rem;
-  text-align: center;
-}
-
-.stat-name {
-  display: block;
-  font-size: 0.72rem;
-  color: #9a8fc7;
-  margin-bottom: 0.25rem;
-}
-
-.stat-value {
-  display: block;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #e8dfff;
-  font-variant-numeric: tabular-nums;
-}
-
-.parts-panel {
-  margin-top: 0.5rem;
-}
-
-.parts-title {
-  font-size: 0.85rem;
-  color: #9a8fc7;
-  margin-bottom: 0.6rem;
-}
-
-.parts-list {
-  max-height: 220px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-}
-
-.parts-empty {
-  text-align: center;
-  font-size: 0.85rem;
-  color: #6b6288;
-  padding: 0.75rem 0;
-}
-
-.part-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(0, 0, 0, 0.22);
-  border-radius: 8px;
-  padding: 0.55rem 0.75rem;
-  border-left: 3px solid #7c3aed;
-}
-
-.part-main {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  min-width: 0;
-}
-
-.part-concentration {
-  font-size: 0.72rem;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-}
-
-.part-concentration.conc-low {
-  color: #93c5fd;
-}
-
-.part-concentration.conc-mid {
-  color: #fbbf24;
-}
-
-.part-concentration.conc-high {
-  color: #f472b6;
-  text-shadow: 0 0 8px rgba(244, 114, 182, 0.4);
-}
-
-.part-item.stat-timeFlow {
-  border-left-color: #60a5fa;
-}
-
-.part-item.stat-stealMultiplier {
-  border-left-color: #f59e0b;
-}
-
-.part-item.stat-luck {
-  border-left-color: #34d399;
-}
-
-.part-name {
-  font-size: 0.85rem;
-  color: #ddd6f5;
-}
-
-.part-bonus {
-  font-size: 0.8rem;
-  color: #b0a3d4;
-  font-variant-numeric: tabular-nums;
-}
-
+/* ===== Toast ===== */
 .toast {
   position: fixed;
   top: 1.5rem;
@@ -625,107 +503,18 @@ body {
   }
 }
 
-/* ===== 设置面板样式 ===== */
-.game-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.25rem;
-}
-
-.header-left, .header-right {
-  width: 80px;
-  display: flex;
-  justify-content: center;
-}
-
-.settings-btn {
-  padding: 0.5rem 0.75rem;
-  font-size: 1.2rem;
-  background: rgba(124, 58, 237, 0.2);
-  border: 1px solid rgba(167, 139, 250, 0.3);
-  border-radius: 8px;
-  color: #c4b5fd;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.settings-btn:hover {
-  background: rgba(124, 58, 237, 0.35);
-  transform: scale(1.05);
-}
-
-.settings-panel {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 200;
-  animation: settings-in 0.2s ease;
-}
-
-.settings-panel.hidden {
-  display: none;
-}
-
-@keyframes settings-in {
+@keyframes panel-in {
   from {
     opacity: 0;
+    transform: translateY(-6px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.settings-content {
-  background: linear-gradient(160deg, #1a1a3e, #24243e);
-  border: 1px solid rgba(167, 139, 250, 0.3);
-  border-radius: 16px;
-  padding: 1.5rem;
-  width: min(380px, 90vw);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-}
-
-.settings-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.25rem;
-}
-
-.settings-header h2 {
-  font-size: 1.2rem;
-  color: #c9b8ff;
-}
-
-.close-settings-btn {
-  padding: 0.4rem 0.6rem;
-  font-size: 1rem;
-  background: rgba(124, 58, 237, 0.2);
-  border: 1px solid rgba(167, 139, 250, 0.3);
-  border-radius: 6px;
-  color: #c4b5fd;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.close-settings-btn:hover {
-  background: rgba(220, 38, 38, 0.3);
-  border-color: rgba(248, 113, 113, 0.4);
-  color: #fca5a5;
-}
-
-.settings-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
+/* ===== 重置存档按钮 ===== */
 .reset-save-btn {
   padding: 0.8rem 1rem;
   font-size: 0.95rem;
@@ -744,84 +533,13 @@ body {
   box-shadow: 0 6px 20px rgba(153, 27, 27, 0.55);
 }
 
-/* ===== 挑战里程碑样式 ===== */
-.challenges-milestone {
-  background: rgba(180, 83, 9, 0.15);
-  border: 1px solid rgba(251, 191, 36, 0.3);
-  border-radius: 14px;
-  padding: 1rem 1.15rem;
-  margin-bottom: 1.5rem;
-  animation: panel-in 0.35s ease;
-}
-
-.challenges-milestone.hidden {
-  display: none;
-}
-
-.challenges-wrapper {
-  height: 16px;
-  border-color: rgba(251, 191, 36, 0.25);
-}
-
-.challenges-bar {
-  background: linear-gradient(90deg, #d97706, #fbbf24);
-  box-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
-}
-
-/* ===== 被诅咒的猎犬面板样式 ===== */
-.cursed-hound-panel {
-  margin-bottom: 1rem;
-}
-
-.cursed-hound-panel.hidden {
-  display: none;
-}
-
-.cursed-hound-bar {
-  background: linear-gradient(90deg, #be123c, #f43f5e);
-  box-shadow: 0 0 10px rgba(244, 63, 94, 0.45);
-}
-
-/* ===== 悖论点里程碑样式 ===== */
-.paradox-milestone {
-  background: rgba(139, 92, 246, 0.15);
-  border: 1px solid rgba(167, 139, 250, 0.3);
-  border-radius: 14px;
-  padding: 1rem 1.15rem;
-  margin-bottom: 1.5rem;
-  animation: panel-in 0.35s ease;
-}
-
-.paradox-milestone.hidden {
-  display: none;
-}
-
-.paradox-wrapper {
-  height: 16px;
-  border-color: rgba(167, 139, 250, 0.25);
-}
-
-.paradox-bar {
-  background: linear-gradient(90deg, #7c3aed, #a78bfa);
-  box-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
-}
-
+/* ===== 响应式 ===== */
 @media (max-width: 720px) {
-  .game-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .hound-panel {
-    position: static;
-    order: 2;
-  }
-
-  .game-content {
-    order: 1;
+  .game-container {
+    padding: 1rem;
   }
 
   .stats-panel {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }

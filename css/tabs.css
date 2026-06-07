@@ -1,0 +1,215 @@
+/* ===== Tab导航栏样式 ===== */
+.tab-nav {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  padding: 0.3rem;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 0.65rem 0.5rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #9a8fc7;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.tab-btn:hover {
+  color: #c4b5fd;
+  background: rgba(124, 58, 237, 0.12);
+}
+
+.tab-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  box-shadow: 0 2px 12px rgba(124, 58, 237, 0.35);
+}
+
+.tab-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ===== 子页面切换 ===== */
+.page-section {
+  display: none;
+  animation: page-in 0.25s ease;
+}
+
+.page-section.active {
+  display: block;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== 子页面头部 ===== */
+.upgrade-page-header,
+.progress-page-header,
+.settings-page-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.upgrade-page-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f87171;
+  text-shadow: 0 0 20px rgba(248, 113, 113, 0.3);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.upgrade-page-subtitle {
+  font-size: 0.9rem;
+  color: #9a8fc7;
+}
+
+.progress-page-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #c9b8ff;
+  text-shadow: 0 0 20px rgba(160, 120, 255, 0.3);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.settings-page-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #c9b8ff;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== 设置页内容 ===== */
+.settings-page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* ===== 成就列表样式 ===== */
+.achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.achievement-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 10px;
+  padding: 0.75rem 0.85rem;
+  border-left: 3px solid #7c3aed;
+  transition: border-color 0.2s;
+}
+
+.achievement-item.completed {
+  border-left-color: #34d399;
+}
+
+.achievement-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.achievement-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #e8dfff;
+}
+
+.achievement-desc {
+  font-size: 0.75rem;
+  color: #9a8fc7;
+}
+
+.achievement-status {
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.achievement-status.done {
+  color: #34d399;
+}
+
+.achievement-status.pending {
+  color: #7c6fa8;
+}
+
+/* ===== 统计详情面板 ===== */
+.stats-detail-panel {
+  margin-top: 1rem;
+}
+
+.stats-detail-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.55rem;
+}
+
+.stats-detail-item {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 0.6rem 0.75rem;
+  text-align: center;
+}
+
+.stats-detail-item .stat-name {
+  display: block;
+  font-size: 0.72rem;
+  color: #9a8fc7;
+  margin-bottom: 0.25rem;
+}
+
+.stats-detail-item .stat-value {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e8dfff;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== 进度页挑战面板 ===== */
+.page-progress .curse-challenges-panel {
+  margin-top: 1rem;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 720px) {
+  .tab-btn {
+    font-size: 0.82rem;
+    padding: 0.55rem 0.3rem;
+  }
+
+  .stats-detail-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

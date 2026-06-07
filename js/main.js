@@ -2,10 +2,11 @@ var TICK_MS = 50;
 var SAVE_INTERVAL_MS = 5000;
 
 Game.load();
+Game.Navigation.init();
 Game.checkCurseGate();
 Game.bindStealButton();
 Game.bindUpgradeButtons();
-Game.bindCurseButton();
+Game.bindCursePageButtons();
 Game.bindSettingsButtons();
 Game.updateUI();
 
@@ -20,3 +21,8 @@ setInterval(function () {
 window.addEventListener('beforeunload', function () {
   Game.save();
 });
+
+// curse.html 重定向：如果有人直接访问 curse.html，跳转到主页面
+if (window.location.pathname.indexOf('curse.html') !== -1) {
+  window.location.href = 'index.html#upgrade';
+}

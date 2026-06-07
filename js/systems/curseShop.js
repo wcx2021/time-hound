@@ -72,8 +72,11 @@ Game.sellCursedPart = function (uid) {
       const pointsGained = Math.ceil(part.concentration * 0.5);
       Game.state.cursePoints += pointsGained;
       Game.state.cursedParts.splice(i, 1);
-      if (Game.state.equippedCursedPartId === uid) {
-        Game.state.equippedCursedPartId = null;
+      const ids = Game.state.equippedCursedPartId ? Game.state.equippedCursedPartId.split(',') : [];
+      const idx = ids.indexOf(uid);
+      if (idx !== -1) {
+        ids.splice(idx, 1);
+        Game.state.equippedCursedPartId = ids.length > 0 ? ids.join(',') : null;
       }
       return pointsGained;
     }
