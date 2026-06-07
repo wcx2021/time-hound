@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>诅咒之门 - 时间猎犬增量</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/curse.css">
+</head>
+<body>
+  <div class="curse-page">
+    <header class="curse-page-header">
+      <a class="back-link" href="index.html">← 返回主界面</a>
+      <h1>诅咒之门</h1>
+      <p class="curse-subtitle">以一切换取禁忌之力。</p>
+    </header>
+
+    <main class="curse-main">
+      <section class="curse-sacrifice-panel">
+        <h2 class="curse-section-title">禁忌献祭</h2>
+        <p class="curse-sacrifice-desc">
+          牺牲你现有的<strong>全部时间本质</strong>与<strong>全部猎犬部件</strong>，
+          换取一件「被诅咒」的猎犬部件。每次献祭计为被诅咒一次。
+          <br><strong>提示：想要达成一次被诅咒，你最少需要 1E4 的时间本质。</strong>
+        </p>
+        <div class="curse-sacrifice-preview" id="sacrifice-preview">
+          可献祭：时间本质 0，部件 0 件
+        </div>
+        <button type="button" class="curse-sacrifice-btn" id="sacrifice-btn" disabled>
+          献祭一切，接受诅咒
+        </button>
+        <p class="curse-sacrifice-warn">此操作不可撤销。</p>
+      </section>
+
+      <section class="curse-inventory-panel">
+        <h2 class="curse-section-title">被诅咒部件</h2>
+        <div class="curse-parts-list" id="curse-parts-list">
+          <div class="parts-empty">尚无被诅咒部件</div>
+        </div>
+      </section>
+
+      <section class="curse-shop-panel hidden" id="curse-shop-panel">
+        <h2 class="curse-section-title">诅咒商店</h2>
+        <div class="curse-points-balance">
+          诅咒点数：<span id="curse-points-balance">0</span>
+        </div>
+        <div class="curse-shop-list" id="curse-shop-list"></div>
+      </section>
+
+      <section class="curse-challenges-panel hidden" id="curse-challenges-panel">
+        <h2 class="curse-section-title">挑战</h2>
+        <button type="button" class="curse-challenge-btn" id="challenge-btn">
+          开始挑战
+        </button>
+      </section>
+    </main>
+
+    <div class="toast hidden" id="curse-toast">
+      <div class="toast-title" id="curse-toast-title">诅咒降临</div>
+      <div class="toast-body" id="curse-toast-body"></div>
+    </div>
+  </div>
+
+  <script src="js/core/gameState.js"></script>
+  <script src="js/systems/save.js"></script>
+  <script src="js/systems/stats.js"></script>
+  <script src="js/systems/curse.js"></script>
+  <script src="js/systems/curseShop.js"></script>
+  <script src="js/systems/timeHound.js"></script>
+  <script src="js/ui/cursePage.js"></script>
+</body>
+</html>

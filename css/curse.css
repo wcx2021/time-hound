@@ -1,0 +1,276 @@
+.curse-page {
+  width: min(640px, 92vw);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.curse-page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.back-link {
+  display: inline-block;
+  color: #9a8fc7;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  transition: color 0.15s;
+}
+
+.back-link:hover {
+  color: #c4b5fd;
+}
+
+.curse-page-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #f87171;
+  text-shadow: 0 0 24px rgba(248, 113, 113, 0.35);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+}
+
+.curse-subtitle {
+  font-size: 0.95rem;
+  color: #9a8fc7;
+}
+
+.curse-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.curse-sacrifice-panel,
+.curse-inventory-panel {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(248, 113, 113, 0.22);
+  border-radius: 16px;
+  padding: 1.25rem;
+}
+
+.curse-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fca5a5;
+  margin-bottom: 0.75rem;
+}
+
+.curse-slot-hint {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #9a8fc7;
+}
+
+.curse-sacrifice-desc {
+  font-size: 0.88rem;
+  color: #b0a3d4;
+  line-height: 1.6;
+  margin-bottom: 0.85rem;
+}
+
+.curse-sacrifice-desc strong {
+  color: #fca5a5;
+}
+
+.curse-sacrifice-preview {
+  font-size: 0.85rem;
+  color: #ddd6f5;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  margin-bottom: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.curse-sacrifice-btn {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #991b1b, #450a0a);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 16px rgba(153, 27, 27, 0.35);
+}
+
+.curse-sacrifice-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(153, 27, 27, 0.5);
+}
+
+.curse-sacrifice-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.curse-sacrifice-warn {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #7c6fa8;
+  margin-top: 0.6rem;
+}
+
+.curse-parts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.curse-part-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  border-left: 3px solid #991b1b;
+}
+
+.curse-part-item.equipped {
+  border-left-color: #f472b6;
+  background: rgba(127, 29, 29, 0.2);
+  box-shadow: 0 0 12px rgba(244, 114, 182, 0.15);
+}
+
+.curse-part-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.curse-part-effect {
+  font-size: 0.75rem;
+  color: #f9a8d4;
+}
+
+.curse-part-actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.curse-equip-btn {
+  padding: 0.4rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(153, 27, 27, 0.6);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.curse-equip-btn:hover:not(:disabled) {
+  background: rgba(153, 27, 27, 0.85);
+}
+
+.curse-equip-btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.curse-sell-btn {
+  padding: 0.4rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(180, 83, 9, 0.6);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.curse-sell-btn:hover {
+  background: rgba(180, 83, 9, 0.85);
+}
+
+.curse-shop-panel {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(96, 165, 250, 0.22);
+  border-radius: 16px;
+  padding: 1.25rem;
+}
+
+.curse-shop-panel.hidden {
+  display: none;
+}
+
+.curse-points-balance {
+  font-size: 0.9rem;
+  color: #93c5fd;
+  margin-bottom: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.curse-points-balance span {
+  font-weight: 700;
+  color: #e0f2fe;
+}
+
+.curse-shop-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.curse-shop-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  border-left: 3px solid #3b82f6;
+}
+
+.curse-shop-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #e8dfff;
+}
+
+.curse-shop-desc {
+  font-size: 0.75rem;
+  color: #9a8fc7;
+  margin-top: 0.15rem;
+}
+
+.curse-shop-level {
+  font-size: 0.72rem;
+  color: #7c6fa8;
+  margin-top: 0.1rem;
+}
+
+.curse-shop-btn {
+  padding: 0.4rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.curse-shop-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.curse-shop-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
